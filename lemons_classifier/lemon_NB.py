@@ -6,7 +6,7 @@ a Car is a good buy (0) or bad buy (1)
 ### Import Modules
 import numpy as np
 import pandas as pd
-from sklearn import metrics, tree, cross_validation
+from sklearn import metrics, naive_bayes, cross_validation
 
 
 ### Import data sets
@@ -35,15 +35,15 @@ X_train, X_test, y_train, y_test = \
 
 
 ### Build model
-clf = tree.DecisionTreeClassifier(max_depth=1000, min_samples_leaf=1).fit(X_train, y_train)
-clf.score(X_train, y_train)
-y_pred_train = clf.predict(X_train)
-y_pred_test = clf.predict(X_test)
+model = naive_bayes.GaussianNB().fit(X_train, y_train)
+model.score(X_train, y_train)
+y_pred_train = model.predict(X_train)
+y_pred_test = model.predict(X_test)
 
 
 ### Stats
-print 'Mean accuracy: ', clf.score(X_train, y_train)
-print 'Mean accuracy: ', clf.score(X_test, y_test)
+print 'Mean accuracy: ', model.score(X_train, y_train)
+print 'Mean accuracy: ', model.score(X_test, y_test)
 print 'training:\n', metrics.confusion_matrix(y_train, y_pred_train)
 print metrics.classification_report(y_train, y_pred_train)
 print 'test:\n', metrics.confusion_matrix(y_test, y_pred_test)

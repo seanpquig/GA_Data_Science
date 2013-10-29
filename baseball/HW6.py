@@ -56,8 +56,8 @@ data_2011['salary_predict'] = regr.predict(input_2011)
 data_2012['salary_predict'] = regr.predict(input_2012)
 
 def fix_neg_salary(salary):
-    if salary < 0:
-        return 0
+    if salary < 480000:
+        return 480000
     else:
         return salary
 
@@ -75,7 +75,7 @@ print 'MAE train:  ', mean_absolute_error(predict_2011, salary_2011)
 print 'MAE test:  ', mean_absolute_error(predict_2012, salary_2012), '\n'
 
 ### OUTPUT DATA
-output_df = data_2012[['playerID', 'yearID', 'salary', 'salary_predict']]
-output_df.to_csv('output.csv')
+# output_df = data_2012[['playerID', 'yearID', 'salary', 'salary_predict']]
+# output_df.to_csv('output.csv')
 
 

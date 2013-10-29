@@ -36,7 +36,7 @@ def main():
 
 
     ### Build model
-    clf = tree.DecisionTreeClassifier(max_depth=3, min_samples_leaf=1).fit(X_train, y_train)
+    clf = tree.DecisionTreeClassifier(max_depth=99999, min_samples_leaf=1).fit(X_train, y_train)
     clf.score(X_train, y_train)
     y_pred_train = clf.predict(X_train)
     y_pred_test = clf.predict(X_test)
@@ -55,13 +55,13 @@ def main():
     print 'test AUC: ', metrics.auc(fpr_test, tpr_test)
 
     #Create visual output of graph
-    import StringIO
-    import pydot
-    graph_out = StringIO.StringIO()
-    tree.export_graphviz(clf, out_file=graph_out)
-    graph = pydot.graph_from_dot_data(graph_out.getvalue())
-    graph.write_pdf('graph.pdf')
-    graph_out.close()
+    # import StringIO
+    # import pydot
+    # graph_out = StringIO.StringIO()
+    # tree.export_graphviz(clf, out_file=graph_out)
+    # graph = pydot.graph_from_dot_data(graph_out.getvalue())
+    # graph.write_pdf('graph.pdf')
+    # graph_out.close()
 
     # y_pred = clf.predict(test_X)
     # submission = pd.DataFrame({ 'RefId' : l_test.RefId, 'prediction' : y_pred })
